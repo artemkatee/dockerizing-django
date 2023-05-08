@@ -6,7 +6,7 @@
 ```
 mkdir /code
 ```
-##создаем папки для хранения постоянных данных:
+#### Создаем папки для хранения постоянных данных:
 ```
 mkdir /code/persistentdata
 mkdir /code/persistentdata/static
