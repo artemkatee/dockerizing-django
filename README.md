@@ -134,6 +134,7 @@ DATABASES = {
 Запускаем docker-compose для проверки БД
 cd /code
 docker-compose up --build
+![image](https://user-images.githubusercontent.com/38987669/236900483-bc042abc-47b8-4e65-ac12-c414a4751bc6.png)
 
 
 Во втором терминале делаем миграцию для проверки(должно быть OK):
@@ -346,4 +347,4 @@ cd app/
 python manage.py collectstatic
 python manage.py migrate
 python manage.py createsuperuser
-![image](https://user-images.githubusercontent.com/38987669/236899786-88a31e54-fc90-4c00-8822-2aab7ca6d511.png)
+
