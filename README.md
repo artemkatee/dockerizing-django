@@ -40,6 +40,7 @@
     .db_settings
 
 
+#### Создаем Dockerfile в папке django и добавляем:
 Создаем Dockerfile в папке django и добавляем:
 ```Shell
 vi /code/django/Dockerfile
