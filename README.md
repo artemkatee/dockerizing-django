@@ -1,4 +1,5 @@
-# Развертывание веб-приложения(nginx + uvicorn + django + postgresql + certbot) используя докер
+# Развертывание веб-приложения используя докер
+## Веб приложение(nginx + uvicorn + django + postgresql + certbot)
 
 ### Создаем каталоги
 
