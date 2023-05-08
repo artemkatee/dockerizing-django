@@ -7,11 +7,9 @@
 ## Создаем каталоги
 
 #### Создаем каталог с веб-приложением:
-```
-mkdir /code
-```
-#### Создаем каталоги для хранения постоянных данных:
+    mkdir /code
 
+#### Создаем каталоги для хранения постоянных данных:
     mkdir /code/persistentdata
     mkdir /code/persistentdata/static
     mkdir /code/persistentdata/media
@@ -23,7 +21,6 @@ mkdir /code
     mkdir /code/persistentdata/certbot/conf/live/animek.ru/ 
 
 #### Создаем каталоги с фреймворком(django), Базой данных(postgres) и веб-сервером(nginx):
-
     mkdir /code/django
     mkdir /code/postgresql
     mkdir /code/nginx
@@ -34,7 +31,6 @@ mkdir /code
     git init . 
 
 #### Создадем файл gitignore и добавим записи:
-
     vi /code/.gitignore
 
  
