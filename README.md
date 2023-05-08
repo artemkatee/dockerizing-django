@@ -33,7 +33,7 @@
 #### Создадем файл .gitignore:
     vi /code/.gitignore
 
-#### Добавляем в `.gitignore` строки + с этого сайта https://raw.githubusercontent.com/github/gitignore/master/Python.gitignore:
+#### Добавляем в `.gitignore` записи с этого сайта https://raw.githubusercontent.com/github/gitignore/master/Python.gitignore, а также(обязательно):
     # Django stuff:
     local_settings.py
     persistentdata/*
