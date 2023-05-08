@@ -22,20 +22,21 @@ mkdir /code/persistentdata/certbot/conf
 mkdir /code/persistentdata/certbot/conf/live/
 mkdir /code/persistentdata/certbot/conf/live/animek.ru/ 
 ```
-Создаем каталоги с фреймворком(django), Базой данных(postgres) и веб-сервером(nginx):
+#### Создаем каталоги с фреймворком(django), Базой данных(postgres) и веб-сервером(nginx):
 ```
 mkdir /code/django
 mkdir /code/postgresql
 mkdir /code/nginx
 ```
-Переходим в каталог и создаем локальный репозиторий в папке с проектом
+#### Переходим в каталог и создаем локальный репозиторий в папке с проектом
 ```
 cd /code
 git init . 
 ```
-Создадем файл gitignore и добавим записи
+#### Создадем файл gitignore и добавим записи:
+```
 vi /code/.gitignore
-
+```
 >```
 ># Django stuff:
 >local_settings.py
