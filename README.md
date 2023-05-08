@@ -25,8 +25,7 @@
     mkdir /code/postgresql
     mkdir /code/nginx
 
-#### Переходим в каталог и создаем локальный репозиторий в папке с проектом
-
+#### Переходим в каталог и создаем локальный репозиторий в папке с проектом:
     cd /code
     git init . 
 
@@ -40,10 +39,11 @@
     .db_settings
 
 
-#### Создаем Dockerfile в папке django и добавляем:
+#### Создаем Dockerfile в папке django:
 ```Shell
 vi /code/django/Dockerfile
 ```
+#### Добавляем запись:
 ```Dockerfile
 FROM python:3.9
 WORKDIR /code
