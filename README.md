@@ -22,16 +22,10 @@ mkdir /code/persistentdata/certbot/conf
 mkdir /code/persistentdata/certbot/conf/live/
 mkdir /code/persistentdata/certbot/conf/live/animek.ru/ 
 ```
-Папка с приложением
+Каталог с фреймворком(django), Базой данных(postgres), веб-сервером(nginx):
 ```
 mkdir /code/django
-```
-Папка с БД
-```
 mkdir /code/postgresql
-```
-Папка с веб-сервером:
-```
 mkdir /code/nginx
 ```
 Создадим локальный репозиторий в папке с проектом
