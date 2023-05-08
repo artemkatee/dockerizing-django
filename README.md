@@ -50,16 +50,16 @@ https://raw.githubusercontent.com/github/gitignore/master/Python.gitignore
 Создаем Dockerfile в папке django и добавляем:
 ```Dockerfile
 vi /code/django/Dockerfile
-FROM python:3.9
-WORKDIR /code
-RUN apt-get update -y
-RUN apt-get upgrade -y
-COPY ./requirements.txt ./
-RUN pip install --upgrade pip
-RUN pip install -r requirements.txt
-COPY ./app ./app
-CMD ["uvicorn", "--app-dir", "./app", "app.asgi:application", "--lifespan=off", "--host", "0.0.0.0", "--port", "8000"] 
-# lifespan - (ASGI Lifespan Support(wontfix) https://code.djangoproject.com/ticket/31508)
+>FROM python:3.9
+>WORKDIR /code
+>RUN apt-get update -y
+>RUN apt-get upgrade -y
+>COPY ./requirements.txt ./
+>RUN pip install --upgrade pip
+>RUN pip install -r requirements.txt
+>COPY ./app ./app
+>CMD ["uvicorn", "--app-dir", "./app", "app.asgi:application", "--lifespan=off", "--host", "0.0.0.0", "--port", "8000"] 
+># lifespan - (ASGI Lifespan Support(wontfix) https://code.djangoproject.com/ticket/31508)
 ```
 Создаем и используем виртуальное окружение:
 
