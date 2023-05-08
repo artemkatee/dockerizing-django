@@ -1,6 +1,4 @@
-# dockerizing-django
-
-## dockerizing application with nginx + uvicorn + django + postgresql + certbot
+# Развертывание веб-приложения(nginx + uvicorn + django + postgresql + certbot) используя докер
 
 ### Создаем папки
 
