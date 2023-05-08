@@ -8,8 +8,8 @@ dockerizing application with nginx + uvicorn + django + postgresql + certbot
 ```mkdir /code```
 
 создаем папки для хранения постоянных данных:
-mkdir /code/persistentdata
-mkdir /code/persistentdata/static
+```mkdir /code/persistentdata
+mkdir /code/persistentdata/static```
 mkdir /code/persistentdata/media
 mkdir /code/persistentdata/db
 mkdir /code/persistentdata/certbot
