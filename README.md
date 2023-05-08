@@ -11,7 +11,7 @@
 mkdir /code
 ```
 #### Создаем каталоги для хранения постоянных данных:
-```
+```Shell
 mkdir /code/persistentdata
 mkdir /code/persistentdata/static
 mkdir /code/persistentdata/media
