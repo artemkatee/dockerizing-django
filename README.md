@@ -11,28 +11,28 @@
 mkdir /code
 ```
 #### Создаем каталоги для хранения постоянных данных:
-```Shell
-mkdir /code/persistentdata
-mkdir /code/persistentdata/static
-mkdir /code/persistentdata/media
-mkdir /code/persistentdata/db
-mkdir /code/persistentdata/certbot
-mkdir /code/persistentdata/certbot/www
-mkdir /code/persistentdata/certbot/conf
-mkdir /code/persistentdata/certbot/conf/live/
-mkdir /code/persistentdata/certbot/conf/live/animek.ru/ 
-```
+
+    mkdir /code/persistentdata
+    mkdir /code/persistentdata/static
+    mkdir /code/persistentdata/media
+    mkdir /code/persistentdata/db
+    mkdir /code/persistentdata/certbot
+    mkdir /code/persistentdata/certbot/www
+    mkdir /code/persistentdata/certbot/conf
+    mkdir /code/persistentdata/certbot/conf/live/
+    mkdir /code/persistentdata/certbot/conf/live/animek.ru/ 
+
 #### Создаем каталоги с фреймворком(django), Базой данных(postgres) и веб-сервером(nginx):
-```
-mkdir /code/django
-mkdir /code/postgresql
-mkdir /code/nginx
-```
+
+    mkdir /code/django
+    mkdir /code/postgresql
+    mkdir /code/nginx
+
 #### Переходим в каталог и создаем локальный репозиторий в папке с проектом
-```
-cd /code
-git init . 
-```
+
+    cd /code
+    git init . 
+
 #### Создадем файл gitignore и добавим записи:
 ```
 vi /code/.gitignore
