@@ -34,15 +34,15 @@ mkdir /code
     git init . 
 
 #### Создадем файл gitignore и добавим записи:
-```
-vi /code/.gitignore
-```
-```
-# Django stuff:
-local_settings.py
-persistentdata/*
-.db_settings
-```
+
+    vi /code/.gitignore
+
+
+    # Django stuff:
+    local_settings.py
+    persistentdata/*
+    .db_settings
+
 +
 и еще с этого сайта
 https://raw.githubusercontent.com/github/gitignore/master/Python.gitignore
