@@ -48,8 +48,10 @@ vi /code/.gitignore
 https://raw.githubusercontent.com/github/gitignore/master/Python.gitignore
 
 Создаем Dockerfile в папке django и добавляем:
-```Dockerfile
+```Shell
 vi /code/django/Dockerfile
+```
+>```Dockerfile
 >FROM python:3.9
 >WORKDIR /code
 >RUN apt-get update -y
@@ -60,7 +62,7 @@ vi /code/django/Dockerfile
 >COPY ./app ./app
 >CMD ["uvicorn", "--app-dir", "./app", "app.asgi:application", "--lifespan=off", "--host", "0.0.0.0", "--port", "8000"] 
 ># lifespan - (ASGI Lifespan Support(wontfix) https://code.djangoproject.com/ticket/31508)
-```
+>```
 Создаем и используем виртуальное окружение:
 
 cd /code/django/
