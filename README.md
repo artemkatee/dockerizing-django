@@ -5,7 +5,7 @@ dockerizing application with nginx + uvicorn + django + postgresql + certbot
 Создаем папки
 
 Папка со всем(для своего удобства создал в корне):
-'mkdir /code'
+`mkdir /code`
 
 создаем папки для хранения постоянных данных:
 mkdir /code/persistentdata
