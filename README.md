@@ -1,20 +1,14 @@
 # dockerizing-django
-dockerizing application with nginx + uvicorn + django + postgresql + certbot
-
-
-Создаем папки
-
-Папка со всем(для своего удобства создал в корне):
-`
+##dockerizing application with nginx + uvicorn + django + postgresql + certbot
+###Создаем папки
+###Папка со всем(для своего удобства создал в корне):
+```
 mkdir /code
-`
-
-создаем папки для хранения постоянных данных:
-`
+```
+##создаем папки для хранения постоянных данных:
+```
 mkdir /code/persistentdata
 mkdir /code/persistentdata/static
-`
-
 mkdir /code/persistentdata/media
 mkdir /code/persistentdata/db
 mkdir /code/persistentdata/certbot
@@ -22,21 +16,24 @@ mkdir /code/persistentdata/certbot/www
 mkdir /code/persistentdata/certbot/conf
 mkdir /code/persistentdata/certbot/conf/live/
 mkdir /code/persistentdata/certbot/conf/live/animek.ru/ 
-
+```
 Папка с приложением
+```
 mkdir /code/django
-
+```
 Папка с БД
+```
 mkdir /code/postgresql
-
+```
 Папка с веб-сервером:
+```
 mkdir /code/nginx
-
+```
 Создадим локальный репозиторий в папке с проектом
+```
 cd /code
-git init
-
-
+git init . 
+```
 Создадим файл gitignore и добавим записи
 vi /code/.gitignore
 # Django stuff:
