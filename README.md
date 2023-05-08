@@ -31,7 +31,7 @@
     git init . 
 
 #### Создадем файл gitignore и добавим записи:
-    vi /code/.gitignore
+`vi /code/.gitignore`
 
  
     # Django stuff:
