@@ -37,7 +37,7 @@ mkdir /code
 
     vi /code/.gitignore
 
-
+ 
     # Django stuff:
     local_settings.py
     persistentdata/*
