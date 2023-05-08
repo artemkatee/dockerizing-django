@@ -37,12 +37,12 @@ git init .
 ```
 vi /code/.gitignore
 ```
->```
-># Django stuff:
->local_settings.py
->persistentdata/*
->.db_settings
->```
+```
+# Django stuff:
+local_settings.py
+persistentdata/*
+.db_settings
+```
 +
 и еще с этого сайта
 https://raw.githubusercontent.com/github/gitignore/master/Python.gitignore
@@ -51,18 +51,18 @@ https://raw.githubusercontent.com/github/gitignore/master/Python.gitignore
 ```Shell
 vi /code/django/Dockerfile
 ```
->```Dockerfile
->FROM python:3.9
->WORKDIR /code
->RUN apt-get update -y
->RUN apt-get upgrade -y
->COPY ./requirements.txt ./
->RUN pip install --upgrade pip
->RUN pip install -r requirements.txt
->COPY ./app ./app
->CMD ["uvicorn", "--app-dir", "./app", "app.asgi:application", "--lifespan=off", "--host", "0.0.0.0", "--port", "8000"] 
-># lifespan - (ASGI Lifespan Support(wontfix) https://code.djangoproject.com/ticket/31508)
->```
+```Dockerfile
+FROM python:3.9
+WORKDIR /code
+RUN apt-get update -y
+RUN apt-get upgrade -y
+COPY ./requirements.txt ./
+RUN pip install --upgrade pip
+RUN pip install -r requirements.txt
+COPY ./app ./app
+CMD ["uvicorn", "--app-dir", "./app", "app.asgi:application", "--lifespan=off", "--host", "0.0.0.0", "--port", "8000"] 
+# lifespan - (ASGI Lifespan Support(wontfix) https://code.djangoproject.com/ticket/31508)
+```
 Создаем и используем виртуальное окружение:
 
 cd /code/django/
