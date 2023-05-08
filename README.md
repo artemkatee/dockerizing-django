@@ -6,10 +6,10 @@
 
 ## Создаем каталоги
 
-Создаем каталог с веб-приложением:
+#### Создаем каталог с веб-приложением:
     mkdir /code
 
-Создаем каталоги для хранения постоянных данных:
+#### Создаем каталоги для хранения постоянных данных:
     mkdir /code/persistentdata
     mkdir /code/persistentdata/static
     mkdir /code/persistentdata/media
@@ -41,7 +41,6 @@
 
 
 #### Создаем Dockerfile в папке django и добавляем:
-Создаем Dockerfile в папке django и добавляем:
 ```Shell
 vi /code/django/Dockerfile
 ```
