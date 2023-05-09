@@ -72,7 +72,7 @@ CMD ["uvicorn", "--app-dir", "./app", "app.asgi:application", "--lifespan=off", 
     vi /code/docker-compose.yaml
     
 #### Добавляем запись в файл `docker-compose.yaml`:
-```Dockerfile
+```yaml
 version: "3.9"
 services: 
   django-backend:
@@ -160,11 +160,18 @@ python manage.py migrate
 
 ## Настройка NGINX
 
-vi /code/nginx/Dockerfile
+#### Создаем `Dockerfile` и добавляем запись:
+    vi /code/nginx/Dockerfile
+
+```Dockerfile
 FROM nginx
 COPY ./default.conf /etc/nginx/conf.d/default.conf 
+```
 
-vi /code/nginx/default.conf
+#### Создаем и добавляем запись в файл настройки nginx `default.conf`:
+    vi /code/nginx/default.conf
+    
+```nginx
 upstream innerdjango {
     server django:8000;   
 }
@@ -177,26 +184,36 @@ server {
         proxy_pass http://innerdjango;
     }
 }
+```
 
-Добавляем в docker-compose сервис:
+#### Добавляем в `docker-compose.yaml` сервис `nginx`:
+```bash
 vi /code/docker-compose.yaml
+```
+```yaml
   nginx:
     restart: always
     build:
       context: ./nginx
     ports:
       - "80:80"
+```
 
-Изменяем переменную в settings.py
-
-vi /code/django/app/app/settings.py
-
+#### Изменяем переменную в файле настроек Django `settings.py`:
+    vi /code/django/app/app/settings.py
+    
+```Python
 ALLOWED_HOSTS = [ 'animek.ru' ]
+ ```
  
-запустим docker-compose.yaml и проверим зайдя на него
+#### Запустим `docker-compose.yaml` и проверим nginx зайдя на сайт: 
+```bash
 docker-compose up --build
+```
 
-Добавляем SSL-шифрование
+
+
+## Добавляем SSL-шифрование
 
 
 Добавим сервис certbot
