@@ -117,9 +117,11 @@ POSTGRES_HOST = 'postgresql'                             # service name in docke
 ```
 
 
+#### Изменим файл настроек Django `settings.py`:
+    vi /code/django/app/app/settings.py
 
-Добавим в настройки джанго 
-vi /code/django/app/app/settings.py
+#### Добавим записи в файл `settings.py` и изменим переменнную `SECRET_KEY`:
+```Python
 import local_settings as settings
 
 SECRET_KEY = settings.SECRET_KEY
@@ -134,21 +136,25 @@ DATABASES = {
         'PORT': '', # default
     }
 }
+```
 
-Запускаем docker-compose для проверки БД
+#### Запускаем `docker-compose.yaml` для проверки БД:
 cd /code
 docker-compose up --build
 
+##Тут картинка?:
+    oisdfgiofd
 
 
-Во втором терминале делаем миграцию для проверки(должно быть OK):
-
+#### Во втором терминале делаем миграцию для проверки(должно быть OK):
+```Bash
 cd /code
 docker-compose exec django bash
 cd app/
 python manage.py migrate
+```
 
-Добавляем NGINX
+## Настройка NGINX
 
 vi /code/nginx/Dockerfile
 FROM nginx
