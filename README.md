@@ -92,13 +92,11 @@ services:
     vi /code/postgresql/.db_settings
 
 #### Добавляем запись:
-```Python
-POSTGRES_USER=deploy-test-user
-POSTGRES_PASSWORD=your-deploy-test-password
-POSTGRES_DB=deploy-db
-```
+    POSTGRES_USER=deploy-test-user
+    POSTGRES_PASSWORD=your-deploy-test-password
+    POSTGRES_DB=deploy-db
 
-Добавим сервис бд в docker_compose.yaml:
+Добавим сервис `postgresql` в `docker_compose.yaml`:
 ```Dockerfile
     postgresql:
         restart: always
