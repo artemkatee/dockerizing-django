@@ -29,7 +29,7 @@
     cd /code
     git init . 
 
-#### Создадем файл .gitignore:
+#### Создадем файл `.gitignore`:
     vi /code/.gitignore
 
 #### Добавляем в `.gitignore` записи с этого сайта https://raw.githubusercontent.com/github/gitignore/master/Python.gitignore, а также(обязательно):
@@ -42,7 +42,7 @@
 #### Создаем Dockerfile в папке django:
     vi /code/django/Dockerfile
 
-#### Добавляем запись:
+#### Добавляем запись в `Dockerfile`:
 ```Dockerfile
 FROM python:3.9
 WORKDIR /code
@@ -71,7 +71,7 @@ CMD ["uvicorn", "--app-dir", "./app", "app.asgi:application", "--lifespan=off", 
 #### Создаем docker-compose.yaml:
     vi /code/docker-compose.yaml
     
-#### Добавляем запись:
+#### Добавляем запись в файл `docker-compose.yaml`:
 ```Dockerfile
 version: "3.9"
 services: 
@@ -86,7 +86,7 @@ services:
     docker-compose up
 ![image](https://user-images.githubusercontent.com/38987669/236900483-bc042abc-47b8-4e65-ac12-c414a4751bc6.png)
 
-Добавляем БД
+## Добавляем БД
 
 Создаем папку:
 
