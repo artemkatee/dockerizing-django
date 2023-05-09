@@ -393,6 +393,8 @@ MEDIA_ROOT = '/var/www/media'
 ```bash
 cd /code
 docker-compose exec django bash
+```
+```bash
 cd app/
 python manage.py collectstatic
 python manage.py migrate
