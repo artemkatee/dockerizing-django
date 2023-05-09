@@ -208,10 +208,10 @@ ALLOWED_HOSTS = [ 'animek.ru' ]
 #### Запустим `docker-compose.yaml` и проверим nginx зайдя на сайт: 
     docker-compose up --build
 
+##ТУТ что-то добавить тип работает
 
 
-
-## Добавляем SSL-шифрование
+## Добавление SSL-шифрования
 
 
 Добавим сервис certbot
