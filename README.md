@@ -371,7 +371,7 @@ services:
 #### Добавляем строки в файл настроек Django `settings.py`:
     vi /code/django/app/app/settings.py
 
-#### после BASE_DIR = Path(__file__).resolve().parent.parent добавляем:
+#### После BASE_DIR = Path(__file__).resolve().parent.parent добавляем:
 ```python
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 SECURE_SSL_REDIRECT = True
