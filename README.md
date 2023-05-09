@@ -88,7 +88,7 @@ services:
 
 ## Настройка БД
 
-Создаем файл настроек БД `.db_settings`:
+#### Создаем файл настроек БД `.db_settings`:
     vi /code/postgresql/.db_settings
 
 #### Добавляем запись:
@@ -96,7 +96,7 @@ services:
     POSTGRES_PASSWORD=your-deploy-test-password
     POSTGRES_DB=deploy-db
 
-Добавим сервис `postgresql` в `docker_compose.yaml`:
+#### Добавим сервис `postgresql` в `docker_compose.yaml`:
 ```Dockerfile
     postgresql:
         restart: always
@@ -104,17 +104,18 @@ services:
         env_file: ./postgresql/.db_settings
 ```
 
+#### Создадем файл `local_settings.py`:
+    vi /code/django/app/local_settings.py
 
-
-Создадим файл local_settings.py и добавим в него  
-SECRET_KEY находится в переменной в файле /code/django/app/app/settings.py
-
-vi /code/django/app/local_settings.py
+#### Добавляем запись(SECRET_KEY находится в переменной в файле /code/django/app/app/settings.py):
+```Python
 SECRET_KEY = 'django-insecure-7k85gz%c*y)xiur)p@2-g=vw$i=ev#l#wk5#34!1s#x+-89823'  
 POSTGRES_DB = 'deploy-db'                                                 # как в .db_settings
 POSTGRES_USER = 'deploy-test-user'                                 # как в .db_settings
 POSTGRES_PASSWORD = 'your-deploy-test-password'   # как в .db_settings
 POSTGRES_HOST = 'postgresql' # service name in docker-compose.yaml
+```
+
 
 
 Добавим в настройки джанго 
