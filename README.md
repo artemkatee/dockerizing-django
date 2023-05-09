@@ -40,9 +40,8 @@
 
 
 #### Создаем Dockerfile в папке django:
-```Shell
-vi /code/django/Dockerfile
-```
+    vi /code/django/Dockerfile
+
 #### Добавляем запись:
 ```Dockerfile
 FROM python:3.9
@@ -56,23 +55,24 @@ COPY ./app ./app
 CMD ["uvicorn", "--app-dir", "./app", "app.asgi:application", "--lifespan=off", "--host", "0.0.0.0", "--port", "8000"] 
 # lifespan - (ASGI Lifespan Support(wontfix) https://code.djangoproject.com/ticket/31508)
 ```
-Создаем и используем виртуальное окружение:
 
-cd /code/django/
-python3 -m venv env
-. ./env/bin/activate
+#### Создаем и используем виртуальное окружение:
+    cd /code/django/
+    python3 -m venv env
+    . ./env/bin/activate
 
-Устанавливаем джанго ювикорн бд, записываем зависимости создаем проект
+#### Устанавливаем Django, Uvicorn, psycopg2(postgres), записываем зависимости создаем проект:
+    pip install -U Django
+    pip install -U uvicorn gunicorn
+    pip install -U psycopg2-binary
+    pip freeze > ./requirements.txt
+    django-admin startproject app
 
-pip install -U Django
-pip install -U uvicorn gunicorn
-pip install -U psycopg2-binary
-pip freeze > ./requirements.txt
-django-admin startproject app
-
-Создаем docker-compose.yaml и запускаем его для проверки uvicorn
-
-vi /code/docker-compose.yaml
+#### Создаем docker-compose.yaml 
+    vi /code/docker-compose.yaml
+    
+#### Добавляем записиь 
+```Dockerfile
 version: "3.9"
 services: 
   django-backend:
@@ -80,9 +80,11 @@ services:
     build:
       context: ./django          
     image: djangobackend
+```
 
+#### Запускаем `docker-compose.yaml`, чтобы проверить работу сервиса uvicorn:
 docker-compose up
-
+![image](https://user-images.githubusercontent.com/38987669/236900483-bc042abc-47b8-4e65-ac12-c414a4751bc6.png)
 
 Добавляем БД
 
@@ -134,7 +136,7 @@ DATABASES = {
 Запускаем docker-compose для проверки БД
 cd /code
 docker-compose up --build
-![image](https://user-images.githubusercontent.com/38987669/236900483-bc042abc-47b8-4e65-ac12-c414a4751bc6.png)
+
 
 
 Во втором терминале делаем миграцию для проверки(должно быть OK):
