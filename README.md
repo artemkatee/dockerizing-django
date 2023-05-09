@@ -139,9 +139,10 @@ DATABASES = {
 ```
 
 #### Запускаем `docker-compose.yaml` для проверки БД:
+```Bash
 cd /code
 docker-compose up --build
-
+```
 ##Тут картинка?:
     oisdfgiofd
 
