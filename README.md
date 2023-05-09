@@ -86,23 +86,26 @@ services:
     docker-compose up
 ![image](https://user-images.githubusercontent.com/38987669/236900483-bc042abc-47b8-4e65-ac12-c414a4751bc6.png)
 
-## Добавляем БД
+## Настройка БД
 
-Создаем папку:
+Создаем файл настроек БД `.db_settings`:
+    vi /code/postgresql/.db_settings
 
-cd postgresql
-
-vi /code/postgresql/.db_settings
+#### Добавляем запись:
+```Python
 POSTGRES_USER=deploy-test-user
 POSTGRES_PASSWORD=your-deploy-test-password
 POSTGRES_DB=deploy-db
+```
 
 Добавим сервис бд в docker_compose.yaml:
+```Dockerfile
+    postgresql:
+        restart: always
+        image: postgres
+        env_file: ./postgresql/.db_settings
+```
 
- postgresql:
-    restart: always
-    image: postgres
-    env_file: ./postgresql/.db_settings
 
 
 Создадим файл local_settings.py и добавим в него  
