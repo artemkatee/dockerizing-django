@@ -68,10 +68,10 @@ CMD ["uvicorn", "--app-dir", "./app", "app.asgi:application", "--lifespan=off", 
     pip freeze > ./requirements.txt
     django-admin startproject app
 
-#### Создаем docker-compose.yaml 
+#### Создаем docker-compose.yaml:
     vi /code/docker-compose.yaml
     
-#### Добавляем записиь 
+#### Добавляем запись:
 ```Dockerfile
 version: "3.9"
 services: 
@@ -83,7 +83,7 @@ services:
 ```
 
 #### Запускаем `docker-compose.yaml`, чтобы проверить работу сервиса uvicorn:
-docker-compose up
+    docker-compose up
 ![image](https://user-images.githubusercontent.com/38987669/236900483-bc042abc-47b8-4e65-ac12-c414a4751bc6.png)
 
 Добавляем БД
