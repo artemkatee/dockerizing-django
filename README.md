@@ -385,7 +385,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = '/var/www/media'
 ```
 
-#### Затем создаем суперпользователя для приложения:
+### Затем создаем суперпользователя для приложения:
     cd /code
     docker-compose up --build
 
