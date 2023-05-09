@@ -201,15 +201,13 @@ vi /code/docker-compose.yaml
 
 #### Изменяем переменную в файле настроек Django `settings.py`:
     vi /code/django/app/app/settings.py
-    
 ```Python
 ALLOWED_HOSTS = [ 'animek.ru' ]
  ```
  
 #### Запустим `docker-compose.yaml` и проверим nginx зайдя на сайт: 
-```bash
-docker-compose up --build
-```
+    docker-compose up --build
+
 
 
 
