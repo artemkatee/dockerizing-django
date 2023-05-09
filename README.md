@@ -277,7 +277,7 @@ certbot certonly --webroot -w /var/www/certbot \
 ```
 
 
-### Завершаем настройку
+## Завершаем настройку
 
 #### Приводим файл настроек nginx `default.conf` к виду:
     vi /code/nginx/default.conf
@@ -385,7 +385,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = '/var/www/media'
 ```
 
-### Затем создаем суперпользователя для приложения:
+#### Затем создаем суперпользователя для приложения:
     cd /code
     docker-compose up --build
 
