@@ -147,13 +147,16 @@ docker-compose up --build
     oisdfgiofd
 
 
-#### Во втором терминале делаем миграцию для проверки(должно быть OK):
+#### Во втором терминале делаем миграцию для проверки внесения изменений в модели приложения:
 ```Bash
 cd /code
 docker-compose exec django bash
+```
+```Bash
 cd app/
 python manage.py migrate
 ```
+#### (должно быть OK) картинка
 
 ## Настройка NGINX
 
