@@ -97,7 +97,7 @@ services:
     POSTGRES_DB=deploy-db
 
 #### Добавляем сервис `postgresql` в `docker_compose.yaml`:
-```Dockerfile
+```yaml
     postgresql:
         restart: always
         image: postgres
@@ -214,10 +214,11 @@ ALLOWED_HOSTS = [ 'animek.ru' ]
 ## Добавление SSL-шифрования
 
 
-Добавим сервис certbot
+#### В файл `docker-compose.yaml` добавим сервис `certbot` и изменим сервис `nginx`:
 
-vi /code/docker-compose.yaml
-services:
+    vi /code/docker-compose.yaml
+
+```yaml
   nginx:
     restart: always
     build:
@@ -233,10 +234,12 @@ services:
     volumes:
       - ./persistentdata/certbot/conf:/etc/letsencrypt 
       - ./persistentdata/certbot/www:/var/www/certbot 
+```
 
-изменим конфигурацию сервера
+#### Изменим файл конфигурации сервера `default.conf`:
+    vi /code/nginx/default.conf
 
-vi /code/nginx/default.conf
+```nginx
 upstream innerdjango {
     server django:8000;
 }
@@ -250,17 +253,20 @@ server {
         root /var/www/certbot;
     }
 }
+```
 
-Генерируем сертификат
+### Сгенерируем сертификат:
 
-Запускаем 
+#### Запустим `docker-compose.yaml`:
+    cd /code
+```bash
 docker-compose up --build
+```
 
+#### Используя второй терминал отправляем запрос на создание сертификата(--email - почта, -d сайт):
+    cd /code
 
-Во втором терминале отправляем запрос на создание сертификата
-
-cd /code
-
+```bash
 docker-compose run --rm --entrypoint "\
 certbot certonly --webroot -w /var/www/certbot \
   --email commandandconquer5@mail.ru \
@@ -268,10 +274,14 @@ certbot certonly --webroot -w /var/www/certbot \
   --rsa-key-size 2048 \
   --agree-tos \
   --force-renewal" certbot
+```
 
-Заканчиваем настройку
 
-vi /code/nginx/default.conf
+### Завершаем настройку
+
+#### Приводим файл настроек nginx `default.conf` к виду:
+    vi /code/nginx/default.conf
+```nginx
 upstream innerdjango {
     server django:8000;   #service django in docker-compose
 }
@@ -305,14 +315,20 @@ server {
       root /var/www;
     }
 }
+```
 
-Добавляем рекомендуемый конфиг для nginx сервера
+#### Добавляем рекомендуемую конфигурацию для nginx:
+```bash
 wget https://raw.githubusercontent.com/certbot/certbot/master/certbot-nginx/certbot_nginx/_internal/tls_configs/options-ssl-nginx.conf 
-mv options-ssl-nginx.conf /code/persistentdata/certbot/conf/ # move it
+mv options-ssl-nginx.conf /code/persistentdata/certbot/conf/
 wget https://raw.githubusercontent.com/certbot/certbot/master/certbot/certbot/ssl-dhparams.pem 
 mv ssl-dhparams.pem /code/persistentdata/certbot/conf/
+```
 
-vi /code/docker-compose.yaml
+#### Приводим файл `docker-compose.yaml` к виду:
+    vi /code/docker-compose.yaml
+
+```yaml
 version: "3.9"
 
 services:
@@ -350,30 +366,35 @@ services:
     volumes:
       - ./persistentdata/certbot/conf:/etc/letsencrypt
       - ./persistentdata/certbot/w
+```
 
-Добавляем строки в settings.py:
-vi /code/django/app/app/settings.py
+#### Добавляем строки в файл настроек Django `settings.py`:
+    vi /code/django/app/app/settings.py
 
-после BASE_DIR = Path(__file__).resolve().parent.parent добавляем:
+#### после BASE_DIR = Path(__file__).resolve().parent.parent добавляем:
+```python
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 SECURE_SSL_REDIRECT = True
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
-
-После STATIC_URL = 'static/' добавляем:
+```
+#### После STATIC_URL = 'static/' добавляем:
+```python
 STATIC_ROOT = '/var/www/static'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = '/var/www/media'
+```
 
-Затем создаем суперпользователя для приложения:
-docker-compose up --build
+#### Затем создаем суперпользователя для приложения:
+    cd /code
+    docker-compose up --build
 
-Во втором терминале по очереди вводим команды:
-
+#### Во втором терминале по очереди вводим команды:
+```bash
 cd /code
 docker-compose exec django bash
 cd app/
 python manage.py collectstatic
 python manage.py migrate
 python manage.py createsuperuser
-
+```
