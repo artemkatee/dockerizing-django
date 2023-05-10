@@ -455,3 +455,6 @@ python manage.py collectstatic
 python manage.py migrate
 python manage.py createsuperuser
 ```
+
+![image](https://github.com/artemkatee/dockerizing-django/assets/38987669/911437e2-195a-4755-877e-aa67477718da)
+
