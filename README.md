@@ -260,7 +260,8 @@ ALLOWED_HOSTS = [ 'animek.ru' ]
 #### Запустим `docker-compose.yaml` и проверим nginx зайдя на сайт: 
     docker-compose up --build
 
-##ТУТ что-то добавить тип работает
+
+![image](https://github.com/artemkatee/dockerizing-django/assets/38987669/9d542d40-e521-4fd6-86e9-da35dcbac36e)
 
 
 ## Добавление SSL-шифрования
