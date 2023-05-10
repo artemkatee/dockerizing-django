@@ -120,6 +120,9 @@ code-django-backend-1  | INFO:     Uvicorn running on http://0.0.0.0:8000 (Press
     POSTGRES_DB=deploy-db
 
 #### Добавляем сервис `postgresql` в `docker_compose.yaml`:
+    vi /code/docker-compose.yaml
+
+
 ```yaml
     postgresql:
         restart: always
