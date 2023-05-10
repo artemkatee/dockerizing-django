@@ -90,7 +90,7 @@ uvicorn==0.22.0
 ```yaml
 version: "3.9"
 services: 
-  django-backend:
+  django:
     restart: always
     build:
       context: ./django          
