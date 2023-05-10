@@ -418,7 +418,7 @@ services:
     entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
     volumes:
       - ./persistentdata/certbot/conf:/etc/letsencrypt
-      - ./persistentdata/certbot/w
+      - ./persistentdata/certbot/www:/var/www/certbot
 ```
 
 #### Добавляем строки в файл настроек Django `settings.py`:
