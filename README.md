@@ -124,10 +124,10 @@ code-django-backend-1  | INFO:     Uvicorn running on http://0.0.0.0:8000 (Press
 
 
 ```yaml
-    postgresql:
-        restart: always
-        image: postgres
-        env_file: ./postgresql/.db_settings
+  postgresql:
+    restart: always
+    image: postgres
+    env_file: ./postgresql/.db_settings
 ```
 
 #### Создаем файл `local_settings.py`:
