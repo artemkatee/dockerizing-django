@@ -184,7 +184,7 @@ python manage.py migrate
 ```
 #### (должно быть OK) картинка
 
-
+```bash
 python manage.py migrate
 Operations to perform:
   Apply all migrations: admin, auth, contenttypes, sessions
@@ -207,7 +207,7 @@ Running migrations:
   Applying auth.0011_update_proxy_permissions... OK
   Applying auth.0012_alter_user_first_name_max_length... OK
   Applying sessions.0001_initial... OK
-
+```
 
 
 ## Настройка NGINX
