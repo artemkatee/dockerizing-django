@@ -449,8 +449,6 @@ MEDIA_ROOT = '/var/www/media'
 #### Затем создаем суперпользователя для приложения:
     cd /code
     docker-compose up --build
-???
-затем docker-compose up
 
 #### Во втором терминале по очереди вводим команды:
 ```bash
