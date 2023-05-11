@@ -268,6 +268,8 @@ ALLOWED_HOSTS = [ 'animek.ru' ]
     vi /code/docker-compose.yaml
 
 ```yaml
+version: "3.9"
+services:
   nginx:
     restart: always
     build:
@@ -276,13 +278,23 @@ ALLOWED_HOSTS = [ 'animek.ru' ]
       - "80:80"
       - "443:443"
     volumes:
-      - ./persistentdata/certbot/conf:/etc/letsencrypt 
-      - ./persistentdata/certbot/www:/var/www/certbot 
+      - ./persistentdata/certbot/conf:/etc/letsencrypt
+      - ./persistentdata/certbot/www:/var/www/certbot
   certbot:
     image: certbot/certbot
     volumes:
-      - ./persistentdata/certbot/conf:/etc/letsencrypt 
-      - ./persistentdata/certbot/www:/var/www/certbot 
+      - ./persistentdata/certbot/conf:/etc/letsencrypt
+      - ./persistentdata/certbot/www:/var/www/certbot
+  django:
+    restart: always
+    build:
+      context: ./django
+    image: djangobackend
+  postgresql:
+    restart: always
+    image: postgres
+    env_file: ./postgresql/.db_settings
+
 ```
 
 #### Изменим файл конфигурации сервера `default.conf`:
