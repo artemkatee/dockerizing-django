@@ -171,7 +171,7 @@ cd /code
 docker-compose up
 ```
 
-#### Во втором терминале делаем миграцию для проверки внесения изменений в модели приложения(в выводе должно быть OK):
+#### Во втором терминале делаем миграцию для проверки внесения изменений в модели приложения:
 ```Bash
 cd /code
 docker-compose exec django bash
@@ -180,7 +180,7 @@ docker-compose exec django bash
 cd app/
 python manage.py migrate
 ```
-Вывод
+Вывод(должно быть OK):
 ```
 Operations to perform:
   Apply all migrations: admin, auth, contenttypes, sessions
