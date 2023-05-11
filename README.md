@@ -102,11 +102,12 @@ services:
 cd /code
 
     docker-compose up
-![image](https://user-images.githubusercontent.com/38987669/236900483-bc042abc-47b8-4e65-ac12-c414a4751bc6.png)
+
+Вывод команды:
 
 ```bash
-code-django-backend-1  | INFO:     Started server process [1]
-code-django-backend-1  | INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+code-django-1  | INFO:     Started server process [1]
+code-django-1  | INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
 ```
 
 ## Настройка БД
