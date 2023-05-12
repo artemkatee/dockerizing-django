@@ -328,13 +328,13 @@ server {
 docker-compose up --build
 ```
 
-#### 4. Используя второй терминал отправляем запрос на создание сертификата(--email - почта, -d сайт):
+#### 4. Используя второй терминал отправляем запрос на создание сертификата(--email почта, -d доменное имя):
     cd /code
 
 ```bash
 docker-compose run --rm --entrypoint "\
 certbot certonly --webroot -w /var/www/certbot \
-  --email commandandconquer5@mail.ru \
+  --email name@mail.ru \
   -d animek.ru \
   --rsa-key-size 2048 \
   --agree-tos \
