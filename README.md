@@ -9,7 +9,31 @@
 
 
 
-## Создаем каталоги
+## Подготовка
+
+#### Установим докер:
+```bash
+sudo apt update
+sudo apt install apt-transport-https ca-certificates curl software-properties-common
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
+apt-cache policy docker-ce
+sudo apt install docker-ce
+sudo systemctl status docker #Для проверки
+```
+
+#### Установим docker-compose:
+```bash
+sudo curl -L "https://github.com/docker/compose/releases/download/v2.17.3/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+docker-compose --version #Для проверки
+```
+
+Установим модуль для виртуального окружения(для python):
+```bash
+apt install python3.8-venv
+```
+
 
 #### 1. Создаем каталог с веб-приложением:
     mkdir /code
