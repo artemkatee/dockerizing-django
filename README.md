@@ -30,20 +30,6 @@
     mkdir /code/postgresql
     mkdir /code/nginx
 
-#### Переходим в каталог и создаем локальный репозиторий в папке с проектом:
-    cd /code
-    git init . 
-
-#### Создадем файл `.gitignore`:
-    vi /code/.gitignore
-
-#### Добавляем в `.gitignore` записи с [github](https://raw.githubusercontent.com/github/gitignore/master/Python.gitignore), а также(обязательно):
-    # Django stuff:
-    local_settings.py
-    persistentdata/*
-    .db_settings
-
-
 #### Создаем Dockerfile в папке django:
     vi /code/django/Dockerfile
 
