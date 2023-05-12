@@ -1,7 +1,7 @@
 # Развертывание веб-приложения на сервере
 
 #### Докеризация веб-приложения(nginx + uvicorn + django + postgresql + certbot) производилась на Ubuntu 20.04.
-![1231](https://github.com/artemkatee/dockerizing-django/assets/38987669/43898050-6bc5-4e5e-a9be-82bf843533ed)
+![1231](https://github.com/artemkatee/dockerizing-django/assets/38987669/4928e695-a025-43bc-8a45-2f4df4689a25)
 
 ## 1. Подготовка
 
