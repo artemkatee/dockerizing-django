@@ -32,7 +32,7 @@
 
 #### Создаем Dockerfile в папке django:
     vi /code/django/Dockerfile
-
+ 
 #### Добавляем запись в `Dockerfile`:
 ```Dockerfile
 FROM python:3.9
