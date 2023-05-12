@@ -5,7 +5,8 @@
 тут картинка
 (nginx + uvicorn + django + postgresql + certbot)
 
-![123](https://github.com/artemkatee/dockerizing-django/assets/38987669/3f0a9a4a-aac2-498f-8f6e-90e8df32d4fc)
+![1231](https://github.com/artemkatee/dockerizing-django/assets/38987669/43898050-6bc5-4e5e-a9be-82bf843533ed)
+
 
 
 ## Создаем каталоги
