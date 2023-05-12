@@ -265,7 +265,7 @@ ALLOWED_HOSTS = [ 'animek.ru' ]
 ![image](https://github.com/artemkatee/dockerizing-django/assets/38987669/9d542d40-e521-4fd6-86e9-da35dcbac36e)
 
 
-## 4. Добавление SSL-шифрования
+## 4. Добавление SSL-шифрования и завершение настройки
 
 
 #### 1. В файл `docker-compose.yaml` добавим сервис `certbot` и изменим сервис `nginx`:
