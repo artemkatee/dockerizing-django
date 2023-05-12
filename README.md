@@ -68,9 +68,8 @@ CMD ["uvicorn", "--app-dir", "./app", "app.asgi:application", "--lifespan=off", 
     pip freeze > ./requirements.txt
     django-admin startproject app
 
-Вывод команды:
+Вывод команды cat `requirements.txt`:
 ```bash
-cat requirements.txt
 asgiref==3.6.0
 backports.zoneinfo==0.2.1
 click==8.1.3
