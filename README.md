@@ -29,7 +29,7 @@ sudo chmod +x /usr/local/bin/docker-compose
 docker-compose --version #Для проверки
 ```
 
-#### Установим `venv`(модуль python для создания виртуального окружения):
+#### Установим `python3.8-venv`(модуль python для создания виртуального окружения):
 ```bash
 apt install python3.8-venv
 ```
