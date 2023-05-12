@@ -463,5 +463,5 @@ python manage.py migrate
 python manage.py createsuperuser
 ```
 
-![image](https://github.com/artemkatee/dockerizing-django/assets/38987669/911437e2-195a-4755-877e-aa67477718da)
+![Captureфыв](https://github.com/artemkatee/dockerizing-django/assets/38987669/45564593-1f0b-4c69-96ad-53bf9d4c4d44)
 
