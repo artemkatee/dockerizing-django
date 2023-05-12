@@ -68,8 +68,8 @@ CMD ["uvicorn", "--app-dir", "./app", "app.asgi:application", "--lifespan=off", 
     pip freeze > ./requirements.txt
     django-admin startproject app
 
-вывод команды 
-
+Вывод команды:
+```bash
 cat requirements.txt
 asgiref==3.6.0
 backports.zoneinfo==0.2.1
@@ -80,7 +80,7 @@ h11==0.14.0
 psycopg2-binary==2.9.6
 sqlparse==0.4.4
 uvicorn==0.22.0
-
+```
 
 
 #### Создаем docker-compose.yaml:
