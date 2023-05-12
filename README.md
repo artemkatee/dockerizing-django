@@ -1,17 +1,11 @@
 # Развертывание веб-приложения на сервере
-## Веб приложение
 
-Устанавливал докер на Ubuntu 20.04 
-тут картинка
-(nginx + uvicorn + django + postgresql + certbot)
-
+#### Развертывание веб-приложения(nginx + uvicorn + django + postgresql + certbot) производилось на Ubuntu 20.04.
 ![1231](https://github.com/artemkatee/dockerizing-django/assets/38987669/43898050-6bc5-4e5e-a9be-82bf843533ed)
-
-
 
 ## Подготовка
 
-#### Установим докер:
+#### 1. Установим docker:
 ```bash
 sudo apt update
 sudo apt install apt-transport-https ca-certificates curl software-properties-common
@@ -22,23 +16,23 @@ sudo apt install docker-ce
 sudo systemctl status docker #Для проверки
 ```
 
-#### Установим docker-compose:
+#### 2. Установим docker-compose:
 ```bash
 sudo curl -L "https://github.com/docker/compose/releases/download/v2.17.3/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 docker-compose --version #Для проверки
 ```
 
-#### Установим `python3.8-venv`(модуль python для создания виртуального окружения):
+#### 3. Установим `python3.8-venv`(модуль python для создания виртуального окружения):
 ```bash
 apt install python3.8-venv
 ```
 
 
-#### 1. Создаем каталог с веб-приложением:
+#### 4. Создаем каталог с веб-приложением:
     mkdir /code
 
-#### 2. Создаем каталоги для хранения постоянных данных:
+#### 5. Создаем каталоги для хранения постоянных данных:
     mkdir /code/persistentdata
     mkdir /code/persistentdata/static
     mkdir /code/persistentdata/media
@@ -49,15 +43,15 @@ apt install python3.8-venv
     mkdir /code/persistentdata/certbot/conf/live/
     mkdir /code/persistentdata/certbot/conf/live/animek.ru/ 
 
-#### Создаем каталоги с фреймворком(django), Базой данных(postgres) и веб-сервером(nginx):
+#### 6. Создаем каталоги с фреймворком(django), Базой данных(postgres) и веб-сервером(nginx):
     mkdir /code/django
     mkdir /code/postgresql
     mkdir /code/nginx
 
-#### Создаем Dockerfile в папке django:
+#### 7. Создаем Dockerfile в папке django:
     vi /code/django/Dockerfile
  
-#### Добавляем запись в `Dockerfile`:
+#### 8. Добавляем запись в `Dockerfile`:
 ```Dockerfile
 FROM python:3.9
 WORKDIR /code
@@ -71,19 +65,19 @@ CMD ["uvicorn", "--app-dir", "./app", "app.asgi:application", "--lifespan=off", 
 # lifespan - (ASGI Lifespan Support(wontfix) https://code.djangoproject.com/ticket/31508)
 ```
 
-#### Создаем и используем виртуальное окружение:
+#### 9. Создаем и используем виртуальное окружение:
     cd /code/django/
     python3 -m venv env
     . ./env/bin/activate
 
-#### Устанавливаем Django, Uvicorn, psycopg2(postgres), записываем зависимости создаем проект:
+#### 10. Устанавливаем Django, Uvicorn, psycopg2(postgres), записываем зависимости создаем проект:
     pip install -U Django
     pip install -U uvicorn gunicorn
     pip install -U psycopg2-binary
     pip freeze > ./requirements.txt
     django-admin startproject app
 
-#### Вывод команды `cat requirements.txt` будет примерно таким:
+#### 11. Вывод команды `cat requirements.txt` будет примерно таким:
 ```bash
 asgiref==3.6.0
 backports.zoneinfo==0.2.1
@@ -97,10 +91,10 @@ uvicorn==0.22.0
 ```
 
 
-#### Создаем docker-compose.yaml:
+#### 12. Создаем docker-compose.yaml:
     vi /code/docker-compose.yaml
     
-#### Добавляем запись в файл `docker-compose.yaml`:
+#### 13. Добавляем запись в файл `docker-compose.yaml`:
 ```yaml
 version: "3.9"
 services: 
@@ -111,30 +105,27 @@ services:
     image: djangobackend
 ```
 
-#### Запускаем `docker-compose.yaml`, чтобы проверить работу сервиса uvicorn:
-
-cd /code
-
+#### 14. Запускаем `docker-compose.yaml`, чтобы проверить работу сервиса uvicorn:
+    cd /code
     docker-compose up
 
-Вывод команды:
-
+#### 15. Вывод команды:
 ```bash
 code-django-1  | INFO:     Started server process [1]
 code-django-1  | INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
 ```
 
-## Настройка БД
+## 2. Настройка БД
 
-#### Создаем файл настроек БД `.db_settings`:
+#### 1. Создаем файл настроек БД `.db_settings`:
     vi /code/postgresql/.db_settings
 
-#### Добавляем запись:
+#### 2. Добавляем запись:
     POSTGRES_USER=deploy-test-user
     POSTGRES_PASSWORD=your-deploy-test-password
     POSTGRES_DB=deploy-db
 
-#### Добавляем сервис `postgresql` в `docker_compose.yaml`:
+#### 3. Добавляем сервис `postgresql` в `docker_compose.yaml`:
     vi /code/docker-compose.yaml
 
 
@@ -145,10 +136,10 @@ code-django-1  | INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C 
     env_file: ./postgresql/.db_settings
 ```
 
-#### Создаем файл `local_settings.py`:
+#### 4. Создаем файл `local_settings.py`:
     vi /code/django/app/local_settings.py
 
-#### Добавляем запись(SECRET_KEY находится в переменной в файле /code/django/app/app/settings.py):
+#### 5. Добавляем запись(SECRET_KEY находится в переменной в файле /code/django/app/app/settings.py):
 ```Python
 SECRET_KEY = 'django-insecure-7k85gz%c*y)xiur)p@2-g=vw$i=ev#l#wk5#34!1s#x+-89823'  
 POSTGRES_DB = 'deploy-db'                                                 # как в .db_settings
@@ -158,10 +149,10 @@ POSTGRES_HOST = 'postgresql'                             # service name in docke
 ```
 
 
-#### Изменим файл настроек Django `settings.py`:
+#### 6. Изменим файл настроек Django `settings.py`:
     vi /code/django/app/app/settings.py
 
-#### Добавим записи в файл `settings.py` и изменим переменнную `SECRET_KEY`:
+#### 7. Добавим записи в файл `settings.py` и изменим переменнную `SECRET_KEY`:
 ```Python
 import local_settings as settings
 
@@ -179,13 +170,13 @@ DATABASES = {
 }
 ```
 
-#### Запускаем `docker-compose.yaml` для проверки БД:
+#### 8. Запускаем `docker-compose.yaml` для проверки БД:
 ```Bash
 cd /code
 docker-compose up
 ```
 
-#### Во втором терминале делаем миграцию для проверки внесения изменений в модели приложения:
+#### 9. Во втором терминале делаем миграцию для проверки внесения изменений в модели приложения:
 ```Bash
 cd /code
 docker-compose exec django bash
@@ -194,7 +185,7 @@ docker-compose exec django bash
 cd app/
 python manage.py migrate
 ```
-Вывод(должно быть OK):
+#### 10. Вывод(должно быть OK):
 ```
 Operations to perform:
   Apply all migrations: admin, auth, contenttypes, sessions
@@ -220,9 +211,9 @@ Running migrations:
 ```
 
 
-## Настройка NGINX
+## 3. Настройка NGINX
 
-#### Создаем `Dockerfile` и добавляем запись:
+#### 1. Создаем `Dockerfile` и добавляем запись:
     vi /code/nginx/Dockerfile
 
 ```Dockerfile
@@ -230,7 +221,7 @@ FROM nginx
 COPY ./default.conf /etc/nginx/conf.d/default.conf 
 ```
 
-#### Создаем и добавляем запись в файл настройки nginx `default.conf`:
+#### 2. Создаем и добавляем запись в файл настройки nginx `default.conf`:
     vi /code/nginx/default.conf
     
 ```nginx
@@ -248,7 +239,7 @@ server {
 }
 ```
 
-#### Добавляем в `docker-compose.yaml` сервис `nginx`:
+#### 3. Добавляем в `docker-compose.yaml` сервис `nginx`:
 ```bash
 vi /code/docker-compose.yaml
 ```
@@ -261,23 +252,23 @@ vi /code/docker-compose.yaml
       - "80:80"
 ```
 
-#### Изменяем переменную в файле настроек Django `settings.py`:
+#### 4. Изменяем переменную в файле настроек Django `settings.py`:
     vi /code/django/app/app/settings.py
 ```Python
 ALLOWED_HOSTS = [ 'animek.ru' ]
  ```
  
-#### Запустим `docker-compose.yaml` и проверим nginx зайдя на сайт: 
+#### 5. Запустим `docker-compose.yaml` и проверим nginx зайдя на сайт: 
     docker-compose up --build
 
 
 ![image](https://github.com/artemkatee/dockerizing-django/assets/38987669/9d542d40-e521-4fd6-86e9-da35dcbac36e)
 
 
-## Добавление SSL-шифрования
+## 4. Добавление SSL-шифрования
 
 
-#### В файл `docker-compose.yaml` добавим сервис `certbot` и изменим сервис `nginx`:
+#### 1. В файл `docker-compose.yaml` добавим сервис `certbot` и изменим сервис `nginx`:
 
     vi /code/docker-compose.yaml
 
@@ -311,7 +302,7 @@ services:
 
 ```
 
-#### Изменим файл конфигурации сервера `default.conf`:
+#### 2. Изменим файл конфигурации сервера `default.conf`:
     vi /code/nginx/default.conf
 
 ```nginx
@@ -330,15 +321,14 @@ server {
 }
 ```
 
-### Сгенерируем сертификат:
 
-#### Запустим `docker-compose.yaml`:
+#### 3. Запустим `docker-compose.yaml`:
     cd /code
 ```bash
 docker-compose up --build
 ```
 
-#### Используя второй терминал отправляем запрос на создание сертификата(--email - почта, -d сайт):
+#### 4. Используя второй терминал отправляем запрос на создание сертификата(--email - почта, -d сайт):
     cd /code
 
 ```bash
@@ -351,10 +341,7 @@ certbot certonly --webroot -w /var/www/certbot \
   --force-renewal" certbot
 ```
 
-
-## Завершаем настройку
-
-#### Приводим файл настроек nginx `default.conf` к виду:
+#### 5. Приводим файл настроек nginx `default.conf` к виду:
     vi /code/nginx/default.conf
 ```nginx
 upstream innerdjango {
@@ -392,7 +379,7 @@ server {
 }
 ```
 
-#### Добавляем рекомендуемую конфигурацию для nginx:
+#### 6. Добавляем рекомендуемую конфигурацию для nginx:
 ```bash
 wget https://raw.githubusercontent.com/certbot/certbot/master/certbot-nginx/certbot_nginx/_internal/tls_configs/options-ssl-nginx.conf 
 mv options-ssl-nginx.conf /code/persistentdata/certbot/conf/
@@ -400,7 +387,7 @@ wget https://raw.githubusercontent.com/certbot/certbot/master/certbot/certbot/ss
 mv ssl-dhparams.pem /code/persistentdata/certbot/conf/
 ```
 
-#### Приводим файл `docker-compose.yaml` к виду:
+#### 7. Приводим файл `docker-compose.yaml` к виду:
     vi /code/docker-compose.yaml
 
 ```yaml
@@ -443,28 +430,28 @@ services:
       - ./persistentdata/certbot/www:/var/www/certbot
 ```
 
-#### Добавляем строки в файл настроек Django `settings.py`:
+#### 8. Добавляем строки в файл настроек Django `settings.py`:
     vi /code/django/app/app/settings.py
 
-#### После BASE_DIR = Path(__file__).resolve().parent.parent добавляем:
+#### 9. После BASE_DIR = Path(__file__).resolve().parent.parent добавляем:
 ```python
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 SECURE_SSL_REDIRECT = True
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 ```
-#### После STATIC_URL = 'static/' добавляем:
+#### 10. После STATIC_URL = 'static/' добавляем:
 ```python
 STATIC_ROOT = '/var/www/static'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = '/var/www/media'
 ```
 
-#### Затем создаем суперпользователя для приложения:
+#### 11. Затем создаем суперпользователя для приложения:
     cd /code
     docker-compose up --build
 
-#### Во втором терминале по очереди вводим команды:
+#### 12. Во втором терминале по очереди вводим команды:
 ```bash
 cd /code
 docker-compose exec django bash
