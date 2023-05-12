@@ -3,7 +3,7 @@
 #### Развертывание веб-приложения(nginx + uvicorn + django + postgresql + certbot) производилось на Ubuntu 20.04.
 ![1231](https://github.com/artemkatee/dockerizing-django/assets/38987669/43898050-6bc5-4e5e-a9be-82bf843533ed)
 
-## Подготовка
+## 1. Подготовка
 
 #### 1. Установим docker:
 ```bash
