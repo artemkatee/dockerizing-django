@@ -1,6 +1,6 @@
 # Развертывание веб-приложения на сервере
 
-#### Докеризация веб-приложения(nginx + uvicorn + django + postgresql + certbot) производилась на Ubuntu 20.04.
+#### Докеризация веб-приложения(nginx + uvicorn + django + postgresql + certbot) производилась на Ubuntu 24.04.4
 ![1231](https://github.com/artemkatee/dockerizing-django/assets/38987669/4928e695-a025-43bc-8a45-2f4df4689a25)
 
 ## 1. Подготовка
@@ -276,7 +276,6 @@ ALLOWED_HOSTS = [ 'animek.ru' ]
     vi /code/docker-compose.yaml
 
 ```yaml
-version: "3.9"
 services:
   nginx:
     restart: always
@@ -394,8 +393,6 @@ mv ssl-dhparams.pem /code/persistentdata/certbot/conf/
     vi /code/docker-compose.yaml
 
 ```yaml
-version: "3.9"
-
 services:
   nginx:
     restart: always
