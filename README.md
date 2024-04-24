@@ -15,6 +15,10 @@ apt-cache policy docker-ce   #Для проверки
 sudo apt install docker-ce
 sudo systemctl status docker #Для проверки
 ```
+#### 1.1 Если ошибка (Warning: apt-key is deprecated. Manage keyring files in trusted.gpg.d):
+```bash
+cp /etc/apt/trusted.gpg /etc/apt/trusted.gpg.d
+```
 
 #### 2. Установим docker-compose:
 ```bash
