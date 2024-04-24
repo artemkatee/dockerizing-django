@@ -29,7 +29,8 @@ docker-compose --version #Для проверки
 
 #### 3. Установим `python3.8-venv`(модуль python для создания виртуального окружения):
 ```bash
-apt install python3.8-venv
+apt-get install vim
+apt install python3.10-venv
 ```
 
 
