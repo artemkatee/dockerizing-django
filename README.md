@@ -58,7 +58,7 @@ apt install python3.10-venv
  
 #### 8. Добавляем запись в `Dockerfile`:
 ```Dockerfile
-FROM python:3.9
+FROM python:3.10
 WORKDIR /code
 RUN apt-get update -y
 RUN apt-get upgrade -y
@@ -101,7 +101,6 @@ uvicorn==0.22.0
     
 #### 13. Добавляем запись в файл `docker-compose.yaml`:
 ```yaml
-version: "3.9"
 services: 
   django:
     restart: always
